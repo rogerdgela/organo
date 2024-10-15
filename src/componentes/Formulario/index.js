@@ -4,14 +4,14 @@ import CampoTexto from "../CampoTexto";
 import ListaSuspensa from "../ListaSuspensa";
 import "./Formulario.css";
 
-const Formulario = () => {
+const Formulario = (props) => {
     const times = [
-    "Programacao",
-    "Front-End",
-    "Data Science",
-    "UX Design",
-    "Inovação e Gestão",
-    "Mobile",
+        "Programacao",
+        "Front-End",
+        "Data Science",
+        "UX Design",
+        "Inovação e Gestão",
+        "Mobile",
     ];
 
     const [nome, setNome] = useState("");
@@ -20,8 +20,14 @@ const Formulario = () => {
     const [time, setTime] = useState("");
 
     const aoSalvar = (evento) => {
-        evento.preventDefault();
-    };
+        evento.preventDefault()
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
+    }   
 
     return (
         <section className="formulario">
