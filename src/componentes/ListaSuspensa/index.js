@@ -13,7 +13,6 @@ const ListaSuspensa = (props) => {
                 }
             </select>
         </div>
-    
     )
 }
 
