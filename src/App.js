@@ -6,7 +6,7 @@ import Time from './componentes/Time';
 function App() {
     const times = [
         {
-            nome: 'Programacao',
+            nome: 'Programação',
             corPrimaria: '#57C278',
             corSecundaria: '#D9F7E9'
         },
