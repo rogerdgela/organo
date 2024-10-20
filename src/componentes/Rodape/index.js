@@ -30,7 +30,7 @@ const Rodape = () => {
 
                 <section>
                     <p>
-                        Desenvolvido por Alura.
+                        Desenvolvido por Rogério.
                     </p>
                 </section>
             </div>
