@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Aplicação de Organização de Pessoas e Times
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta aplicação foi desenvolvida em **ReactJS** e tem como objetivo organizar visualmente pessoas e suas respectivas equipes em uma organização. A interface exibe vários times e suas informações como nome, cargo e e-mail. Não há integração com banco de dados, os dados são gerenciados diretamente no estado da aplicação através do hook `useState`.
 
-## Available Scripts
+<p align="center">
+  <img alt="Organização de Pessoas e Times" src=".github/cover.jpg" width="100%">
+</p>
 
-In the project directory, you can run:
+## Funcionalidades
 
-### `npm start`
+- Exibe times e membros organizados por setores (e.g., Programação, Front End, Data Science, etc.)
+- Possui um formulário que pode ser utilizado para simular o cadastro de novas pessoas (dados não persistem, pois não há banco de dados)
+- Interface responsiva e com cores distintas para cada setor
+- Não usa banco de dados, os dados são mantidos no estado utilizando `useState`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Estrutura de Componentes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **App.js**: Componente principal que gerencia o estado global da aplicação e exibe os outros componentes.
+2. **Formulario.js**: Componente que contém o formulário para cadastro de novas pessoas (somente simulação).
+3. **Coladobador.js**: Componente para exibir as informações de cada coladobador.
+4. **Times.js**: Componente que organiza os membros por times/departamentos.
 
-### `npm test`
+## Hooks
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### useState
 
-### `npm run build`
+Todos os dados da aplicação (como a lista de times e pessoas) são armazenados em variáveis de estado utilizando o hook `useState`. A seguir está um exemplo de como os times são definidos e como colaboradores são adicionados ao estado:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+import React, { useState } from 'react';
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const times = [
+    {
+        nome: 'Programação',
+        corPrimaria: '#57C278',
+        corSecundaria: '#D9F7E9'
+    },
+    {
+        nome: 'Front-End',
+        corPrimaria: '#82CFFA',
+        corSecundaria: '#E8F8FF'
+    },
+    {
+        nome: 'Data Science',
+        corPrimaria: '#A6D157',
+        corSecundaria: '#F0F8E2'
+    },
+    {
+        nome: 'UX Design',
+        corPrimaria: '#E06B69',
+        corSecundaria: '#FDE7E8'
+    },
+    {
+        nome: 'Inovação e Gestão',
+        corPrimaria: '#DB6EBF',
+        corSecundaria: '#FAE9F5'
+    },
+    {
+        nome: 'Mobile',
+        corPrimaria: '#FFBA05',
+        corSecundaria: '#FFF5D9'
+    },
+    {
+        nome: 'Devops',
+        corPrimaria: '#FF8A29',
+        corSecundaria: '#FFEEDF'
+    }
+];
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const [colaboradores, setColaboradores] = useState([]);
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+const aoNovoColaboradorAdicionado = (colaborador) => {
+    setColaboradores([...colaboradores, colaborador]);
+};
